@@ -37,7 +37,7 @@ namespace InTheBag.Controllers
         [HttpPost]
         public IActionResult NewWishIndex(Wishes model)
         {
-            Wishes myWishes = new Wishes { ID = 1, wish1 = model.wish1, wish2 = model.wish2, wish3 = model.wish3 };
+            Wishes myWishes = new Wishes { ID = 1, wish1 = Request.Form["wish1"], wish2 = Request.Form["wish2"], wish3 = Request.Form["wish3"] };
             string jsonWishes = JsonConvert.SerializeObject(myWishes);
             HttpContext.Session.SetString("wish", jsonWishes);
             return View("WishIndex");
